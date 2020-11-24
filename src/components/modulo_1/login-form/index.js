@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import './style.css'
 
-const URL = 'http://izibug.herokuapp.com/'
+const URL = 'http://izibug2.herokuapp.com/'
 // import Modal from 'react-bootstrap/Modal'
 
 
