@@ -4,7 +4,7 @@ let config = {
         host: 'cluster0.oib74.mongodb.net',
         user: 'iziBug',
         pass: 'amizade123',
-        db: 'Project 0',
+        db: 'iziBug',
         urlAdd: '?retryWrites=true&w=majority'
     },
     server:{
