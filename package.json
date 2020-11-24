@@ -27,7 +27,7 @@
     "cors": "^2.8.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "sh start.sh",
     "back": "sh start.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
