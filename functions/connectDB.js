@@ -16,7 +16,7 @@ function connect() {
     },
         (error) => {
             if (error) {
-                console.log('Erro na conexão com o banco de dados: ' + error)
+                console.log('Erro na conexãoo com o banco de dados: ' + error)
             } else {
                 console.log('Aplicação conectada com o banco de dados!')
             }
