@@ -13,5 +13,3 @@ let config = {
 }
 
 module.exports = config;
-
-mongodb+srv://iziBug:<password>@cluster0.oib74.mongodb.net/<dbname>?retryWrites=true&w=majority
