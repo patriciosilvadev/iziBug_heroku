@@ -5,8 +5,6 @@ const app = express();
 const allowCors = require('cors')
 const bodyParser = require('body-parser')
 
-process.env.PORT = config.server.porta;
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.json());
@@ -18,13 +16,12 @@ app.use('/tasks', require('./routes/tasksRoutes'));
 app.use('/user', require('./routes/usersRoutes'));
 
 
-app.listen(process.env.PORT || 8080)
 
-// app.listen(process.env.PORT, () => {
-//     console.log(`Escutando na ${process.env.PORT}!`);
-//     let connection = connectDB.connect();
+app.listen(process.env.PORT, () => {
+    console.log(`Escutando na ${process.env.PORT}!`);
+    let connection = connectDB.connect();
 
     // Importando Models
     require('./models/taskModel').tasksModel;
     require('./models/userModel').userModel;
-// });
+});
