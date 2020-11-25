@@ -8,7 +8,7 @@ let config = {
         urlAdd: '?retryWrites=true&w=majority'
     },
     server:{
-        porta: 4000
+        porta: 5000
     },
 }
 
