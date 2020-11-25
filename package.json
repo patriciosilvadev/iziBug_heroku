@@ -27,7 +27,7 @@
     "cors": "^2.8.5"
   },
   "scripts": {
-    "start": "sh start.sh",
+    "start": "yarn | npx nodemon server.js | react-scripts start",
     "back": "sh start.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
