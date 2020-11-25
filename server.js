@@ -18,9 +18,11 @@ app.use('/tasks', require('./routes/tasksRoutes'));
 app.use('/user', require('./routes/usersRoutes'));
 
 
-app.listen(process.env.PORT, () => {
-    console.log(`Escutando na ${process.env.PORT}!`);
-    let connection = connectDB.connect();
+app.listen(process.env.PORT || 8080)
+
+// app.listen(process.env.PORT, () => {
+//     console.log(`Escutando na ${process.env.PORT}!`);
+//     let connection = connectDB.connect();
 
     // Importando Models
     require('./models/taskModel').tasksModel;
