@@ -1,11 +1,12 @@
 const express = require('express');
 const { resposta } = require('../functions/resposta-json')
-const router = express.Router();const { model } = require('mongoose');
+const router = express.Router();
+let Tasks = require('../models/taskModel').tasksModel;
 
 router.post('/', async (req, res) => {
   const body = req.body;
   try {
-    const response = await model('Task').create(body);
+    const response = await Tasks.create(body);
     return resposta(res, 200, 'OK', 'Chamado criado com sucesso!', response)
 } catch (error) {
     resposta(res, 400, 'ERRO', 'Ocorreu um erro ao criar o chamado, tente novamente!', String(error))
@@ -16,7 +17,7 @@ router.get('/', async (req, res) => {
   const query = req.query;
   try {
     if (query.limite) {
-        const response = await model('Task').find({}).sort({ createdAt: 'desc' }).limit(parseInt(query.limite));
+        const response = await Tasks.find({}).sort({ createdAt: 'desc' }).limit(parseInt(query.limite));
         return resposta(res, 200, 'OK', 'Chamado encontrada com sucesso!', response)
     } else {
         return resposta(res, 400, 'ERRO', 'Ocorreu um erro pois o campo "limite" não foi enviado!')
@@ -49,7 +50,7 @@ router.get('/buscar', async (req, res) => {
       if (body.buscar) {
           const regex = new RegExp(`${String(body.buscar)}+`, 'i')
           console.log(regex)
-          const response = await model('Task').find({ $or:[ {idChamado: regex}, {assunto: regex} ,{prioridade: regex} , {mensagem: regex} , {solicitante: regex}] }).sort({ createdAt: 'desc' });
+          const response = await Tasks.find({ $or:[ {idChamado: regex}, {assunto: regex} ,{prioridade: regex} , {mensagem: regex} , {solicitante: regex}] }).sort({ createdAt: 'desc' });
           resposta(res, 200, 'OK', 'Busca realizada com sucesso!', response)
       } else {
           return resposta(res, 400, 'ERRO', 'Ocorreu um erro pois o campo "buscar" não foi enviado!')
@@ -63,7 +64,7 @@ router.put('/', async (req, res) => {
   const body = req.body;
   try {
     if (body._id) {
-        const response = await model('Task').findOne({ _id: body._id }).update(body);
+        const response = await Tasks.findOne({ _id: body._id }).update(body);
         return resposta(res, 200, 'OK', 'Chamado atualizada com sucesso!', response)
     } else {
         return resposta(res, 400, 'ERRO', 'Ocorreu um erro pois o campo "_id" não foi enviado!')
@@ -77,7 +78,7 @@ router.delete('/', async (req, res) => {
     const body = req.body;
     try {
       if (body._id) {
-          const response = await model('Task').remove({ _id: body._id });
+          const response = await Tasks.remove({ _id: body._id });
           return resposta(res, 200, 'OK', 'Chamado deletado com sucesso!', response)
       } else {
           return resposta(res, 400, 'ERRO', 'Ocorreu um erro pois o campo "_id" não foi enviado!')

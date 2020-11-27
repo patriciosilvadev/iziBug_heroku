@@ -1,9 +1,9 @@
 //  ONLY COPYS
 
  function resposta(res, statusCode, status, statusMotivo, resposta = {}) {
-    res.status(statusCode);
+    // res.status(statusCode);
     res.json({
-        'statusCode': "" + statusCode,
+        'statusCode': statusCode,
         'status': status,
         'statusMotivo': statusMotivo,
         'resposta': resposta
